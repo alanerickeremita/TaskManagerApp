@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TaskManagerApp</string>
+    <string name="action_settings">Configurações</string>
+  
+    <string name="set_task">Informe a Tarefa</string>
+    <string name="set_local">Informe o Local</string>
+    <string name="set_time">Horário</string>
+    <string name="set_date">Data</string>
+  
+    <string name="btn_insert">Inserir</string>
+    <string name="btn_update">Atualizar</string>
+    <string name="btn_delete">Apagar</string>
+  
+    <string name="get_task">Tarefa:</string>
+    <string name="get_local">Local:</string>
+    <string name="get_time">Horário:</string>
+    <string name="get_date">Data:</string>
+</resources>

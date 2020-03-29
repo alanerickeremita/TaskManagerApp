@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/linearLayout1">
+        <EditText
+            android:inputType="textCapCharacters"
+            android:hint="@string/set_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText1" />
+
+        <EditText
+            android:inputType="textPostalAddress"
+            android:hint="@string/set_local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2" />
+
+        <EditText
+            android:inputType="time"
+            android:hint="@string/set_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3" />
+
+    <CalendarView
+        android:autofillHints="@string/set_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:hint="@string/btn_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/button1" />
+
+    </LinearLayout>
+
+</LinearLayout>
+    
