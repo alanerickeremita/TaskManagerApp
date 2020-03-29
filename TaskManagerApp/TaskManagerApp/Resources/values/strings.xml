@@ -10,9 +10,14 @@
     <string name="btn_insert">Inserir</string>
     <string name="btn_update">Atualizar</string>
     <string name="btn_delete">Apagar</string>
+    <string name="btn_back">Voltar</string>
+    <string name="btn_exit">Sair</string>
+    <string name="btn_list">Listar Tarefas</string>
   
     <string name="get_task">Tarefa:</string>
     <string name="get_local">Local:</string>
     <string name="get_time">Horário:</string>
     <string name="get_date">Data:</string>
+
+    <string name="list_task">Lista de Tarefas</string>
 </resources>

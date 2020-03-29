@@ -12,16 +12,15 @@ using Android.Widget;
 
 namespace TaskManagerApp.View
 {
-  [Activity(Label = "@string/list_task")]
-  public class ListTask : Activity
+  [Activity(Label = "ListTaskAdd")]
+  public class ListTaskAdd : Activity
   {
-    Button btn_back;
     protected override void OnCreate(Bundle savedInstanceState)
     {
       base.OnCreate(savedInstanceState);
 
-      SetContentView(Resource.Layout.ListTaskLayout);
-      //btn_back = FindViewById<Button>();
+      // Create your application here
+      SetContentView(Resource.Layout.ListTaskAdd);
     }
   }
 }
