@@ -4,20 +4,39 @@ using System;
 using System.Collections.Generic;
 using TaskManagerApp.Model;
 
+
 namespace TaskManagerApp.DataBase
 {
-  public class DataBase: IDataBase
+  public class DataBaseConfig : IDataBase
   {
-    //Parametrizacao do caminho onde será salvo o banco SQLite
-    private string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+    //Diretorio
+    private string _path;
 
-    //Verifica se banco de dados está inicializado
+    public DataBaseConfig()
+    {
+      CheckInitDataBase();
+    }
+
+    public string PathSqLite
+    {
+      get
+      {
+        if (string.IsNullOrEmpty(_path))
+        {
+          _path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+        }
+        return _path;
+      }
+    }
+
+
+    //Inicializa o banco de dados
     public bool CheckInitDataBase()
     {
       try
       {
         //Conexao com serviço do banco de dados
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
           //Criando a tabela
           connection.CreateTable<Task>();
@@ -32,12 +51,12 @@ namespace TaskManagerApp.DataBase
     }
 
     //Insere tarefas na tabela
-    public bool InserTask(Task task)
+    public bool InsertTask(Task task)
     {
       try
       {
         //Conexao com serviço do banco de dados
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
           connection.Insert(task);
           return true;
@@ -55,7 +74,7 @@ namespace TaskManagerApp.DataBase
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
           return connection.Table<Task>().ToList();
         }
@@ -72,9 +91,9 @@ namespace TaskManagerApp.DataBase
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
-          connection.Query<Task>("UPDATE Task SET IdTask=?, Description=?, Local=?, Date=?", task.IdTask, task.Description, task.Local, DateTime.Now);
+          connection.Query<Task>("UPDATE Task SET IdTask=?, Description=?, Local=?, Time=?, Date=?", task.IdTask, task.Description, task.Local, task.Time, task.Date);
           return true;
         }
       }
@@ -90,7 +109,7 @@ namespace TaskManagerApp.DataBase
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
           connection.Delete(task);
           return true;
@@ -108,7 +127,7 @@ namespace TaskManagerApp.DataBase
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(path, "Task.db")))
+        using (var connection = new SQLiteConnection(System.IO.Path.Combine(PathSqLite, "Task.db")))
         {
           connection.Query<Task>("SELECT * FROM Aluno Where IdTask=?", idTask); ;
           return true;

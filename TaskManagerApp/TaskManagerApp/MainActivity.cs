@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -10,10 +11,8 @@ namespace TaskManagerApp
   public class MainActivity : Activity
   {
     Button btn_list, btn_insert, btn_exit;
+    EditText get_email, get_timeSendEmail;
     GridView gridView;
-
-    private IconLayoutAdapter iconLayoutAdapter;
-    private TaskIcon icon;
 
     protected override void OnCreate(Bundle savedInstanceState)
     {
@@ -21,41 +20,34 @@ namespace TaskManagerApp
       Xamarin.Essentials.Platform.Init(this, savedInstanceState);
       SetContentView(Resource.Layout.Main);
 
-      gridView = FindViewById<GridView>(Resource.Id.gridView1);
-      iconLayoutAdapter = new IconLayoutAdapter(GetIcon(), this);
-      gridView.Adapter = iconLayoutAdapter;
+      //Get Text to use in ws that send-emails
+      get_email = FindViewById<EditText>(Resource.Id.txt_email);
+      get_timeSendEmail = FindViewById<EditText>(Resource.Id.txt_horarioEmail);
 
       #region Buttons
-      btn_list = FindViewById<Button>(Resource.Id.button2);
-      btn_exit = FindViewById<Button>(Resource.Id.button3);
-      btn_insert = FindViewById<Button>(Resource.Id.button1);
+      btn_list = FindViewById<Button>(Resource.Id.btn_listM);
+      btn_exit = FindViewById<Button>(Resource.Id.btn_exit);
+      btn_insert = FindViewById<Button>(Resource.Id.btn_insertM);
       #endregion
 
       #region Events
-      btn_list.Click += Btn_list_Click;
-      btn_insert.Click += Btn_insert_Click;
-      btn_exit.Click += Btn_exit_Click;
+      btn_list.Click += delegate
+      {
+        var listTask = new Intent(this, typeof(ListTaskActivity));
+        StartActivity(listTask);
+      };
+
+      btn_insert.Click += delegate
+      {
+        var listTaskAdd = new Intent(this, typeof(ListTaskAddActivity));
+        StartActivity(listTaskAdd);
+      };
+
+      btn_exit.Click += delegate
+      {
+
+      };
       #endregion
-    }
-
-    private TaskIcon GetIcon()
-    {
-      return icon = new TaskIcon("Icone", Resource.Id.imageView1);
-    }
-
-    private void Btn_insert_Click(object sender, System.EventArgs e)
-    {
-      SetContentView(Resource.Layout.ListTaskAdd);
-    }
-
-    private void Btn_exit_Click(object sender, System.EventArgs e)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void Btn_list_Click(object sender, System.EventArgs e)
-    {
-      SetContentView(Resource.Layout.ListTaskLayout);
     }
   }
 }

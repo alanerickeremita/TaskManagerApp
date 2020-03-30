@@ -2,10 +2,13 @@
     <string name="app_name">TaskManagerApp</string>
     <string name="action_settings">Configurações</string>
   
-    <string name="set_task">Informe a Tarefa</string>
-    <string name="set_local">Informe o Local</string>
-    <string name="set_time">Horário</string>
-    <string name="set_date">Data</string>
+    <string name="get_email">E-mail:</string>
+    <string name="get_horarioEmail">Horario para envio:</string>
+  
+    <string name="set_task">Informe o Motivo:</string>
+    <string name="set_local">Informe o Local:</string>
+    <string name="set_time">Horário:</string>
+    <string name="set_date">Data:</string>
   
     <string name="btn_insert">Inserir</string>
     <string name="btn_update">Atualizar</string>
@@ -20,4 +23,5 @@
     <string name="get_date">Data:</string>
 
     <string name="list_task">Lista de Tarefas</string>
+    <string name="task_insert">Inserir Tarefa</string>
 </resources>
