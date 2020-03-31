@@ -16,13 +16,8 @@ namespace TaskManagerApp.Model
     public string Local { get; set; }
 
     public string Time { get; set; }
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
 
-    [MaxLength(50)]
-    public string Email { get; set; }
-
-    [MaxLength(50)]
-    public string TimeSendEmail { get; set; }
     #endregion
   }
 }

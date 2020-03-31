@@ -64,6 +64,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ListAdapterTask.cs" />
     <Compile Include="Data\DataBaseConfig.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\IDataBase.cs" />
@@ -103,7 +104,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ListTaskView.xml">
+    <AndroidResource Include="Resources\layout\ListTaskRow.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -123,11 +124,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ListTaskLayout.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\task_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ListTaskLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

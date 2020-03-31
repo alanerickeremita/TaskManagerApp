@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
+using System;
 using TaskManagerApp.DataBase;
 using TaskManagerApp.Model;
 
@@ -48,13 +42,17 @@ namespace TaskManagerApp.View
           task.Description = get_task.Text.ToString();
           task.Local = get_local.Text.ToString();
           task.Time = get_time.Text.ToString();
-          //task.Date = get_date;
+          task.Date = get_date.Text.ToString();
 
           dataBase.InsertTask(task);
+
+          var actualActivity = new Intent(this, typeof(ListTaskAddActivity));
+          StartActivity(actualActivity);
         }
+        //TODO: Verificar preenchimento de log para esta funcionalidade
         catch (Exception e)
         {
-
+          string exception = e.Message;
         }
       };
       btn_back.Click += delegate

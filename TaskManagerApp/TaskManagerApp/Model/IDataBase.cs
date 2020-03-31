@@ -8,7 +8,6 @@ namespace TaskManagerApp.Model
   //interface para design pattern
   public interface IDataBase 
   {
-    public string PathSqLite { get; }
     public bool CheckInitDataBase();
     public bool InsertTask(Task task);
     public List<Task> GetListTasks(); 

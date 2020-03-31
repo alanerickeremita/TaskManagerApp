@@ -10,10 +10,9 @@ namespace TaskManagerApp
   [Activity(Label = "@string/app_name", MainLauncher = true)]
   public class MainActivity : Activity
   {
-    Button btn_list, btn_insert, btn_exit;
-    EditText get_email, get_timeSendEmail;
-    GridView gridView;
-
+    Button btn_list, btn_insert, btn_exit, btn_send;
+    EditText get_email;
+   
     protected override void OnCreate(Bundle savedInstanceState)
     {
       base.OnCreate(savedInstanceState);
@@ -21,13 +20,13 @@ namespace TaskManagerApp
       SetContentView(Resource.Layout.Main);
 
       //Get Text to use in ws that send-emails
-      get_email = FindViewById<EditText>(Resource.Id.txt_email);
-      get_timeSendEmail = FindViewById<EditText>(Resource.Id.txt_horarioEmail);
+      get_email = FindViewById<EditText>(Resource.Id.txt_emailAddress);
 
       #region Buttons
       btn_list = FindViewById<Button>(Resource.Id.btn_listM);
       btn_exit = FindViewById<Button>(Resource.Id.btn_exit);
       btn_insert = FindViewById<Button>(Resource.Id.btn_insertM);
+      btn_send = FindViewById<Button>(Resource.Id.btn_send);
       #endregion
 
       #region Events
@@ -45,7 +44,7 @@ namespace TaskManagerApp
 
       btn_exit.Click += delegate
       {
-
+        this.FinishAffinity();
       };
       #endregion
     }
