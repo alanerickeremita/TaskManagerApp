@@ -64,16 +64,19 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control\ListAdapterTask.cs" />
+    <Compile Include="Control\ListTaskAdapter.cs" />
+    <Compile Include="Control\ServiceActivity.cs" />
     <Compile Include="Data\DataBaseConfig.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\IDataBase.cs" />
+    <Compile Include="Model\PostServiceParams.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Control\ListTaskActivity.cs" />
     <Compile Include="Model\TaskIcon.cs" />
     <Compile Include="Control\ListTaskAddActivity.cs" />
+    <Compile Include="Server\RequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -104,13 +107,19 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ListTaskRow.xml">
+    <AndroidResource Include="Resources\layout\ListTaskAdapter.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.6.292</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
     </PackageReference>
     <PackageReference Include="System.ServiceModel.Primitives">
       <Version>4.7.0</Version>
@@ -136,6 +145,9 @@
     <AndroidResource Include="Resources\layout\ListTaskLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Services.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

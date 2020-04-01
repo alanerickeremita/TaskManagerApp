@@ -8,12 +8,13 @@ using TaskManagerApp.Model;
 
 namespace TaskManagerApp.Control
 {
-  public class ListAdapterTask : BaseAdapter
+  [Activity(Label = "@string/list_task")]
+  public class ListTaskAdapter : BaseAdapter
   {
     private readonly Activity context;
     private readonly List<Task> tasks;
 
-    public ListAdapterTask(Activity _context, List<Task> _alunos)
+    public ListTaskAdapter(Activity _context, List<Task> _alunos)
     {
       this.context = _context;
       this.tasks = _alunos;
@@ -34,7 +35,7 @@ namespace TaskManagerApp.Control
 
     public override Android.Views.View GetView(int position, Android.Views.View convertView, ViewGroup parent)
     {
-      Android.Views.View view = context.LayoutInflater.Inflate(Resource.Layout.ListTaskRow, parent, false);
+      Android.Views.View view = context.LayoutInflater.Inflate(Resource.Layout.ListTaskAdapter, parent, false);
 
       var txt_getTask = view.FindViewById<TextView>(Resource.Id.txt_task);
       var txt_getLocal = view.FindViewById<TextView>(Resource.Id.txt_local);
@@ -47,7 +48,6 @@ namespace TaskManagerApp.Control
       txt_getTime.Text = tasks[position].Time;
 
       return view;
-
     }
 
     public override Java.Lang.Object GetItem(int position)

@@ -1,13 +1,8 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Database;
-using Android.Database.Sqlite;
 using Android.OS;
-using Android.Views;
 using Android.Widget;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using TaskManagerApp.Control;
 using TaskManagerApp.DataBase;
 
@@ -50,7 +45,7 @@ namespace TaskManagerApp.View
     private void GetListView()
     {
       listTask = dataBase.GetListTasks();
-      var adapter = new ListAdapterTask(this, listTask);
+      var adapter = new ListTaskAdapter(this, listTask);
       listTaskView.Adapter = adapter;
     }
   }

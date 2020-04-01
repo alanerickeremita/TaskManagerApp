@@ -80,7 +80,7 @@ namespace TaskManagerApp.DataBase
       {
         using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
-          connection.Query<Task>("UPDATE Task SET IdTask=?, Description=?, Local=?, Time=?, Date=?", task.IdTask, task.Description, task.Local, task.Time, task.Date);
+          connection.Query<Task>("UPDATE Task SET IdTask = ?, Description = ?, Local = ?, Time = ?, Date = ?", task.IdTask, task.Description, task.Local, task.Time, task.Date);
           return true;
         }
       }
@@ -116,7 +116,7 @@ namespace TaskManagerApp.DataBase
       {
         using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
-          connection.Query<Task>("SELECT * FROM Aluno Where IdTask=?", idTask); ;
+          connection.Query<Task>("SELECT * FROM Aluno Where IdTask = ?", idTask); ;
           return true;
         }
       }

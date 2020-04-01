@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Android.Util;
 using System;
 using TaskManagerApp.DataBase;
 using TaskManagerApp.Model;
@@ -19,12 +20,12 @@ namespace TaskManagerApp.View
     {
       dataBase = new DataBaseConfig();
       base.OnCreate(savedInstanceState);
-
-      // Create your application here
       SetContentView(Resource.Layout.ListTaskAdd);
 
+      #region Buttons
       btn_insert = FindViewById<Button>(Resource.Id.btn_insertAdd);
       btn_back = FindViewById<Button>(Resource.Id.bt_backAdd);
+      #endregion
 
       #region Texts
       get_task = (EditText)FindViewById(Resource.Id.editTask);
@@ -49,13 +50,13 @@ namespace TaskManagerApp.View
           var actualActivity = new Intent(this, typeof(ListTaskAddActivity));
           StartActivity(actualActivity);
         }
-        //TODO: Verificar preenchimento de log para esta funcionalidade
         catch (Exception e)
         {
-          string exception = e.Message;
+          Log.Info($"Não foi possível inserir uma nova tarefa.{System.Environment.NewLine}Erro: ", e.Message);
         }
       };
-      btn_back.Click += delegate
+
+      btn_back.Click += delegate  
       {
         var main = new Intent(this, typeof(MainActivity));
         StartActivity(main);
