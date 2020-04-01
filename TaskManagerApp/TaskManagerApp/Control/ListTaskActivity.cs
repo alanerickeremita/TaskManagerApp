@@ -20,14 +20,17 @@ namespace TaskManagerApp.View
 
     protected override void OnCreate(Bundle savedInstanceState)
     {
-      base.OnCreate(savedInstanceState);
-
-      SetContentView(Resource.Layout.ListTaskLayout);
-      btn_back = FindViewById<Button>(Resource.Id.btn_backList);
-      listTaskView = FindViewById<ListView>(Resource.Id.list_taskView);
-
+      //Instancia das funções do banco de dados
       dataBase = new DataBaseConfig();
       dataBase.CheckInitDataBase();
+
+      base.OnCreate(savedInstanceState);
+      SetContentView(Resource.Layout.ListTaskLayout);
+
+      #region Layout Items
+      btn_back = FindViewById<Button>(Resource.Id.btn_backList);
+      listTaskView = FindViewById<ListView>(Resource.Id.list_taskView);
+      #endregion
 
       #region Events
       btn_back.Click += delegate
@@ -42,9 +45,14 @@ namespace TaskManagerApp.View
       #endregion
     }
 
+    /// <summary>
+    /// Recebe a view que carrega as tareas que serão exibidas
+    /// </summary>
     private void GetListView()
     {
       listTask = dataBase.GetListTasks();
+
+      //Adapter que recebe o contexto da activity e a lista de tarefas
       var adapter = new ListTaskAdapter(this, listTask);
       listTaskView.Adapter = adapter;
     }

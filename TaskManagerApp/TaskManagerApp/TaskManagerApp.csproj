@@ -69,14 +69,13 @@
     <Compile Include="Data\DataBaseConfig.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\IDataBase.cs" />
-    <Compile Include="Model\PostServiceParams.cs" />
+    <Compile Include="Server\RequestServiceParams.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Control\ListTaskActivity.cs" />
     <Compile Include="Model\TaskIcon.cs" />
     <Compile Include="Control\ListTaskAddActivity.cs" />
-    <Compile Include="Server\RequestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

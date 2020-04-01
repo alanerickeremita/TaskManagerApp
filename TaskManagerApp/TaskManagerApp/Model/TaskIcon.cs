@@ -12,11 +12,14 @@ using Android.Widget;
 
 namespace TaskManagerApp.View
 {
+  //Configuração para exibiçao da imagem
   public class TaskIcon
   {
+    #region Parameters
     public string Name { get; set; }
 
     public int Id { get; set; }
+    #endregion
 
     public TaskIcon(string _name, int _id)
     {

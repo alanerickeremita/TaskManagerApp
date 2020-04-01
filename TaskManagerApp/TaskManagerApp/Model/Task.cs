@@ -3,6 +3,7 @@ using System;
 
 namespace TaskManagerApp.Model
 {
+  //Parametros das tasks e configuração do banco de dados
   public class Task
   {
     #region Parameters

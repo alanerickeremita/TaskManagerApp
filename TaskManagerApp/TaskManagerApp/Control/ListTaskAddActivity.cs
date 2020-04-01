@@ -12,22 +12,24 @@ namespace TaskManagerApp.View
   [Activity(Label = "@string/task_insert")]
   public class ListTaskAddActivity : Activity
   {
+    #region Parameters
     EditText get_task, get_local, get_time, get_date;
     Button btn_insert, btn_back;
     DataBaseConfig dataBase;
+    #endregion
 
     protected override void OnCreate(Bundle savedInstanceState)
     {
+      //Instancia das funções do banco de dados
       dataBase = new DataBaseConfig();
+
       base.OnCreate(savedInstanceState);
       SetContentView(Resource.Layout.ListTaskAdd);
-
-      #region Buttons
+      
+      #region Layout Items
       btn_insert = FindViewById<Button>(Resource.Id.btn_insertAdd);
       btn_back = FindViewById<Button>(Resource.Id.bt_backAdd);
-      #endregion
 
-      #region Texts
       get_task = (EditText)FindViewById(Resource.Id.editTask);
       get_local = (EditText)FindViewById(Resource.Id.editLocal);
       get_time = (EditText)FindViewById(Resource.Id.editTime);
@@ -47,6 +49,7 @@ namespace TaskManagerApp.View
 
           dataBase.InsertTask(task);
 
+          //Instancia novamente a página para atualizar os dados dos campos da view
           var actualActivity = new Intent(this, typeof(ListTaskAddActivity));
           StartActivity(actualActivity);
         }
@@ -58,6 +61,7 @@ namespace TaskManagerApp.View
 
       btn_back.Click += delegate  
       {
+        //Retorna novamente para a view principal
         var main = new Intent(this, typeof(MainActivity));
         StartActivity(main);
       };

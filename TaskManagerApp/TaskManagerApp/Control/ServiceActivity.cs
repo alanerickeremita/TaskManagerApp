@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Xml.Serialization;
-using TaskManagerApp.Model;
 using TaskManagerApp.Server;
 
 namespace TaskManagerApp.Control
@@ -16,21 +14,22 @@ namespace TaskManagerApp.Control
   [Activity(Label = "@string/service_act")]
   public class ServiceActivity : Activity
   {
+    #region Parameters
     Button btn_backService, btn_send, btn_readJson;
     TextView txt_viewService;
+    #endregion
 
     protected override void OnCreate(Bundle savedInstanceState)
     {
       base.OnCreate(savedInstanceState);
       SetContentView(Resource.Layout.Services);
 
-      #region Button
+      #region Layout Items
       btn_backService = FindViewById<Button>(Resource.Id.btn_backList);
       btn_send = FindViewById<Button>(Resource.Id.btn_send);
       btn_readJson = FindViewById<Button>(Resource.Id.btn_ReadJson);
-      #endregion
-
       txt_viewService = FindViewById<TextView>(Resource.Id.txt_viewService);
+      #endregion
 
       #region Events
       btn_backService.Click += delegate
@@ -39,42 +38,60 @@ namespace TaskManagerApp.Control
         StartActivity(main);
       };
 
+      //Post Request - Envio de Json
       btn_send.Click += async delegate
       {
-        using (var connection = new HttpClient())
+        using (HttpClient connection = new HttpClient())
         {
-          var novoPost = new PostServiceParams
+          //Configuração dos Parametros para utilização do serviço de POST 
+          RequestServiceParams novoPost = new RequestServiceParams
           {
-            UserId = 12,
+            UserId = 11,
             Title = "TaskManagerApp - Post",
             Content = "My 1st post with Xamarin Mobile "
           };
 
-          var json = JsonConvert.SerializeObject(novoPost);
-          var content = new StringContent(json, Encoding.UTF8, "application/json");
+          //Converção do objeto novoPost para JSON
+          string json = JsonConvert.SerializeObject(novoPost);
 
-          var uri = "http://jsonplaceholder.typicode.com/posts";
-          var result = await connection.PostAsync(uri, content);
+          //Encoding do conteúdo do JSON para string assincrona
+          StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+          //Configuração para a request
+          string uri = "http://jsonplaceholder.typicode.com/posts";
+
+          //Request e StatusCode
+          HttpResponseMessage result = await connection.PostAsync(uri, content);
           result.EnsureSuccessStatusCode();
 
-          var resultString = await result.Content.ReadAsStringAsync();
-          var post = JsonConvert.DeserializeObject<PostServiceParams>(resultString);
+          //Conversao do resultado para uma string assincrona
+          string resultString = await result.Content.ReadAsStringAsync();
 
+          //Deserializacao do resultado para um JSON
+          RequestServiceParams post = JsonConvert.DeserializeObject<RequestServiceParams>(resultString);
+
+          //Set na view o conteúdo retornado pelo WS
           txt_viewService.Text = post.ToString();
         }
         
       };
 
+      //Get Request - Reposta de Json
       btn_readJson.Click += async delegate
       {
-        using (var connection = new HttpClient())
+        //Configuracao de GET para receber dados do JSON
+        using (HttpClient connection = new HttpClient())
         {
-          var uri = "http://jsonplaceholder.typicode.com/posts";
-          var result = await connection.GetStringAsync(uri);
+          string uri = "http://jsonplaceholder.typicode.com/posts";
+          string result = await connection.GetStringAsync(uri);
 
-          var responses = JsonConvert.DeserializeObject<List<PostServiceParams>>(result);
+          //Lista com as respostas do JSON retornado pela requisição GET
+          List<RequestServiceParams> responses = JsonConvert.DeserializeObject<List<RequestServiceParams>>(result);
+          
+          //Set da resposta
+          RequestServiceParams response = responses.First();
 
-          var response = responses.First();
+          //Set na view o conteúdo retornado pelo WS
           txt_viewService.Text = string.Format($"Primeiro post:{System.Environment.NewLine} {response}");
         }
       };

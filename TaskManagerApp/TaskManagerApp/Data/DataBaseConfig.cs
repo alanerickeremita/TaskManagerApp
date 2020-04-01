@@ -9,21 +9,24 @@ namespace TaskManagerApp.DataBase
 {
   public class DataBaseConfig : IDataBase
   {
-    //Diretorio
-    private string _path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+    //Parametrizacao do caminho do diretório
+    private readonly string _path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
     public DataBaseConfig()
     {
       CheckInitDataBase();
     }
 
-    //Inicializa o banco de dados
+    /// <summary>
+    /// Inicializa o bando de dados e cria uma tabela do tipo Task
+    /// </summary>
+    /// <returns></returns>
     public bool CheckInitDataBase()
     {
       try
       {
         //Conexao com serviço do banco de dados
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           //Criando a tabela
           connection.CreateTable<Task>();
@@ -37,13 +40,17 @@ namespace TaskManagerApp.DataBase
       }
     }
 
-    //Insere tarefas na tabela
+    /// <summary>
+    /// Insere uma task no banco de dados
+    /// </summary>
+    /// <param name="task"></param>
+    /// <returns></returns>
     public bool InsertTask(Task task)
     {
       try
       {
         //Conexao com serviço do banco de dados
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           connection.Insert(task);
           return true;
@@ -56,12 +63,15 @@ namespace TaskManagerApp.DataBase
       }
     }
 
-    //Retorna Tabela como uma lista de objetos
+    /// <summary>
+    /// Retorna a lista de tabelas cadastradas no banco de dados
+    /// </summary>
+    /// <returns></returns>
     public List<Task> GetListTasks()
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           return connection.Table<Task>().ToList();
         }
@@ -73,12 +83,16 @@ namespace TaskManagerApp.DataBase
       }
     }
 
-    //Atualiza Tabela de Tarefas
+    /// <summary>
+    /// Atualiza taks no banco de dados
+    /// </summary>
+    /// <param name="task"></param>
+    /// <returns></returns>
     public bool UpdateTask(Task task)
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           connection.Query<Task>("UPDATE Task SET IdTask = ?, Description = ?, Local = ?, Time = ?, Date = ?", task.IdTask, task.Description, task.Local, task.Time, task.Date);
           return true;
@@ -91,12 +105,16 @@ namespace TaskManagerApp.DataBase
       }
     }
 
-    //Exclui determinada tarefa
+    /// <summary>
+    /// Exclui task no banco de dados
+    /// </summary>
+    /// <param name="task"></param>
+    /// <returns></returns>
     public bool DeleteTask(Task task)
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           connection.Delete(task);
           return true;
@@ -109,12 +127,16 @@ namespace TaskManagerApp.DataBase
       }
     }
 
-    //Recebe uma determinada tarefa
+    /// <summary>
+    /// Seleciona uma tarefa através do ID
+    /// </summary>
+    /// <param name="idTask"></param>
+    /// <returns></returns>
     public bool GetTask(int idTask)
     {
       try
       {
-        using (var connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
+        using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(_path, "Task.db")))
         {
           connection.Query<Task>("SELECT * FROM Aluno Where IdTask = ?", idTask); ;
           return true;

@@ -5,7 +5,7 @@ using System.ServiceModel;
 
 namespace TaskManagerApp.Model
 {
-  //interface para design pattern
+  //Interface para os métodos de manipulação do banco de dados
   public interface IDataBase 
   {
     public bool CheckInitDataBase();
