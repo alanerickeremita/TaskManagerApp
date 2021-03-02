@@ -1,0 +1,68 @@
+﻿
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout1">
+    <ImageView
+        android:src="@drawable/task_icon"
+        android:layout_width="396.0dp"
+        android:layout_height="388.5dp"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/img_icon" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="60.5dp"
+        android:id="@+id/linearLayout2">
+        <Button
+            android:text="@string/btn_insert"
+            android:layout_width="136.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_insertM"
+            android:layout_weight="1"/>
+        <Button
+            android:text="@string/btn_list"
+            android:layout_width="139.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_listM"
+            android:layout_weight="1"/>
+        <Button
+            android:text="@string/btn_exit"
+            android:layout_width="119.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_exit"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:hint="@string/get_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_emailAddress"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <Button
+            android:text="@string/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_send" 
+            android:layout_weight="1"/>
+            <Button
+            android:text="@string/btn_service"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_service"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

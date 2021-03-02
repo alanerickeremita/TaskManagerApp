@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TaskManagerApp</string>
+    <string name="action_settings">Configurações</string>
+  
+    <string name="get_email">E-mail:</string>
+    <string name="btn_send">Enviar</string>
+    <string name="btn_readJson">Ler Json</string>
+    <string name="btn_readXML">Ler XML</string>
+  
+    <string name="set_task">Informe o Motivo:</string>
+    <string name="set_local">Informe o Local:</string>
+    <string name="set_time">Horário:</string>
+    <string name="set_date">Data:</string>
+  
+    <string name="btn_insert">Inserir</string>
+    <string name="btn_update">Atualizar</string>
+    <string name="btn_delete">Apagar</string>
+    <string name="btn_back">Voltar</string>
+    <string name="btn_exit">Sair</string>
+    <string name="btn_list">Listar Tarefas</string>
+    <string name="btn_service">Service</string>
+  
+    <string name="get_task">Tarefa:</string>
+    <string name="get_local">Local:</string>
+    <string name="get_time">Horário:</string>
+    <string name="get_date">Data:</string>
+
+    <string name="list_task">Lista de Tarefas</string>
+    <string name="task_insert">Inserir Tarefa</string>
+    <string name="list_adpter">Adapter - Lista</string>
+    <string name="service_act">Serviço</string>
+</resources>
